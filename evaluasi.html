@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluasi Python</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 1rem 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffdd57;
+        }
+
+        main {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin: 20px;
+            animation: fadeIn 0.5s;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #e4e4e4;
+        }
+
+        #timer {
+            text-align: right;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .question label {
+            display: block;
+            margin: 10px 0;
+            font-size: 1em;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #0073e6;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+            transform: scale(1.05);
+        }
+
+        #evaluation-results {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        footer {
+            background-color: #0073e6;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Evaluasi Pemrograman Dasar Python</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="materi.html">Materi</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="coding.html">Coding</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="evaluasi">
+            <h2>Evaluasi</h2>
+            <div id="timer">Waktu Tersisa: <span id="time">10:00</span></div>
+            <form id="evaluation-form">
+                <div id="questions"></div>
+                <div class="buttons">
+                    <button type="button" id="prevBtn" onclick="changeQuestion(-1)" disabled>Previous</button>
+                    <button type="button" id="nextBtn" onclick="changeQuestion(1)">Next</button>
+                    <button type="button" id="submitBtn" onclick="submitEvaluation()" style="display:none;">Submit</button>
+                </div>
+            </form>
+            <div id="evaluation-results"></div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Pembelajaran Pemrograman Dasar Python</p>
+    </footer>
+
+    <script>
+        const questions = [
+            { q: "1. Apa output dari kode: print(2 + 3)?", options: ["A. 23", "B. 5", "C. 2 + 3", "D. Error"], correct: 1 },
+            { q: "2. Fungsi untuk mencetak di layar adalah?", options: ["A. display()", "B. print()", "C. echo()", "D. write()"], correct: 1 },
+            { q: "3. Bagaimana cara mendefinisikan fungsi di Python?", options: ["A. def myFunction()", "B. function myFunction()", "C. define myFunction()", "D. myFunction def()"], correct: 0 },
+            { q: "4. Apa output dari kode: print('Hello, ' + 'World!')?", options: ["A. Hello, World!", "B. HelloWorld!", "C. Hello, World", "D. Error"], correct: 0 },
+            { q: "5. Mana yang bukan tipe data di Python?", options: ["A. int", "B. float", "C. real", "D. str"], correct: 2 },
+            { q: "6. Bagaimana cara membuat komentar di Python?", options: ["A. // komentar", "B. # komentar", "C. <!-- komentar -->", "D. 'komentar'"], correct: 1 },
+            { q: "7. Apa output dari kode: print(10 // 3)?", options: ["A. 3.33", "B. 3", "C. 3.0", "D. Error"], correct: 1 },
+            { q: "8. Apa kegunaan dari pernyataan 'break' dalam loop?", options: ["A. Melanjutkan iterasi berikutnya", "B. Mengakhiri loop saat ini", "C. Mengakhiri program", "D. Melewati iterasi saat ini"], correct: 1 },
+            { q: "9. Apa output dari kode: print(type('Hello'))?", options: ["A. <class 'string'>", "B. <type 'str'>", "C. <class 'str'>", "D. <type 'string'>"], correct: 2 },
+            { q: "10. Bagaimana cara menulis komentar multiline di Python?", options: ["A. '''komentar'''", "B. <!--komentar-->", "C. //komentar", "D. /*komentar*/"], correct: 0 },
+        ];
+        
+        let currentQuestion = 0;
+        let score = 0;
+        let time = 600; // 10 minutes in seconds
+
+        function loadQuestion(index) {
+            const questionContainer = document.getElementById('questions');
+            questionContainer.innerHTML = `
+                <div class="question">
+                    <p>${questions[index].q}</p>
+                    ${questions[index].options.map((option, i) => `
+                        <label>
+                            <input type="radio" name="question${index}" value="${i}">
+                            ${option}
+                        </label>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function changeQuestion(step) {
+            const selectedOption = document.querySelector(`input[name="question${currentQuestion}"]:checked`);
+            if (selectedOption && parseInt(selectedOption.value) === questions[currentQuestion].correct) {
+                score += 10;
+            }
+            currentQuestion += step;
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').style.display = currentQuestion === questions.length - 1 ? 'none' : 'inline';
+            document.getElementById('submitBtn').style.display = currentQuestion === questions.length - 1 ? 'inline' : 'none';
+            loadQuestion(currentQuestion);
+        }
+
+        function submitEvaluation() {
+            const selectedOption = document.querySelector(`input[name="question${currentQuestion}"]:checked`);
+            if (selectedOption && parseInt(selectedOption.value) === questions[currentQuestion].correct) {
+                score += 10;
+            }
+            document.getElementById('evaluation-results').innerHTML = `<p>Total skor Anda: ${score} dari 100</p>`;
+            document.getElementById('evaluation-form').style.display = 'none';
+        }
+
+        function updateTime() {
+            const timerElement = document.getElementById('time');
+            const minutes = Math.floor(time / 60);
+            const seconds = time % 60;
+            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (time > 0) {
+                time--;
+                setTimeout(updateTime, 1000);
+            } else {
+                submitEvaluation();
+            }
+        }
+
+        window.onload = function() {
+            loadQuestion(currentQuestion);
+            updateTime();
+        };
+    </script>
+</body>
+</html>

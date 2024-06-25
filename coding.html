@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Python</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@latest/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@latest/dist/skulpt-stdlib.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Coding Pemrograman Dasar Python</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="materi.html">Materi</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="evaluasi.html">Evaluasi</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="coding">
+            <h2>Coding</h2>
+            <textarea id="code-editor" rows="10" placeholder="Write your Python code here..."></textarea>
+            <button onclick="runCode()">Run Code</button>
+            <pre id="output"></pre>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Pembelajaran Pemrograman Dasar Python</p>
+    </footer>
+
+    <script>
+        function runCode() {
+            const code = document.getElementById('code-editor').value;
+            const outputDiv = document.getElementById('output');
+            
+            Sk.configure({output: function (text) { outputDiv.innerText += text + '\n'; }});
+            Sk.misceval.asyncToPromise(function() {
+                return Sk.importMainWithBody("<stdin>", false, code, true);
+            }).catch(function(err) {
+                outputDiv.innerText += err.toString();
+            });
+        }
+    </script>
+</body>
+</html>

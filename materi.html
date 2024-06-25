@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Python</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 1rem 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffdd57;
+        }
+
+        main {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin: 20px;
+            animation: fadeIn 0.5s;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        p, ul, pre {
+            font-size: 1.1em;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        footer {
+            background-color: #0073e6;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Materi Pemrograman Dasar Python</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="evaluasi.html">Evaluasi</a></li>
+                <li><a href="coding.html">Coding</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="materi">
+            <h2>Materi</h2>
+            <p>Di sini Anda akan belajar dasar-dasar pemrograman Python. Mari kita mulai dengan dasar-dasar sintaks, variabel, tipe data, struktur kondisional, looping, fungsi, dan kelas.</p>
+            
+            <h3>Sintaks Dasar</h3>
+            <p>Python menggunakan indentasi untuk menandakan blok kode. Berikut contoh sederhana:</p>
+            <pre><code>if 5 > 2:
+    print("Five is greater than two!")</code></pre>
+            
+            <h3>Variabel</h3>
+            <p>Variabel digunakan untuk menyimpan nilai. Contoh:</p>
+            <pre><code>x = 5
+y = "Hello, World!"</code></pre>
+            
+            <h3>Tipe Data</h3>
+            <p>Python memiliki beberapa tipe data bawaan, seperti angka, string, dan list. Contoh:</p>
+            <pre><code>x = 5       # int
+y = "Hello"  # str
+z = [1, 2, 3]  # list</code></pre>
+
+            <h3>Struktur Kondisional</h3>
+            <p>Struktur kondisional digunakan untuk membuat keputusan dalam kode. Contoh:</p>
+            <pre><code>if x > y:
+    print("x is greater than y")
+elif x == y:
+    print("x is equal to y")
+else:
+    print("x is less than y")</code></pre>
+
+            <h3>Looping</h3>
+            <p>Python memiliki beberapa cara untuk melakukan looping melalui data, seperti menggunakan for dan while loop. Contoh:</p>
+            <pre><code>for i in range(5):
+    print(i)
+
+i = 0
+while i < 5:
+    print(i)
+    i += 1</code></pre>
+
+            <h3>Fungsi</h3>
+            <p>Fungsi adalah blok kode yang hanya berjalan ketika dipanggil. Contoh:</p>
+            <pre><code>def my_function():
+    print("Hello from a function")
+
+my_function()</code></pre>
+
+            <h3>Kelas dan Objek</h3>
+            <p>Python adalah bahasa pemrograman berorientasi objek. Hampir semuanya adalah objek, dengan propertinya dan metodenya. Contoh:</p>
+            <pre><code>class MyClass:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        print(f"Hello, my name is {self.name} and I am {self.age} years old.")
+
+p1 = MyClass("John", 36)
+p1.greet()</code></pre>
+
+            <h3>File I/O</h3>
+            <p>Python dapat digunakan untuk membaca dan menulis file. Contoh:</p>
+            <pre><code># Menulis ke file
+with open("example.txt", "w") as file:
+    file.write("Hello, World!")
+
+# Membaca dari file
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)</code></pre>
+
+            <h3>Exception Handling</h3>
+            <p>Python memiliki mekanisme untuk menangani kesalahan dengan menggunakan blok try-except. Contoh:</p>
+            <pre><code>try:
+    print(x)
+except NameError:
+    print("Variable x is not defined")
+except:
+    print("Something else went wrong")</code></pre>
+
+            <h3>Library Standar</h3>
+            <p>Python memiliki banyak library standar yang bisa digunakan untuk berbagai keperluan. Contoh:</p>
+            <pre><code>import math
+
+print(math.sqrt(16))
+print(math.pi)</code></pre>
+
+            <h3>Penggunaan Library Populer</h3>
+            <p>Selain library standar, Python juga memiliki banyak library populer seperti NumPy dan Pandas untuk analisis data. Contoh:</p>
+            <pre><code>import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+print(arr)</code></pre>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Pembelajaran Pemrograman Dasar Python</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Python</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Quiz Pemrograman Dasar Python</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="materi.html">Materi</a></li>
+                <li><a href="evaluasi.html">Evaluasi</a></li>
+                <li><a href="coding.html">Coding</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="quiz">
+            <h2>Quiz</h2>
+            <div class="quiz-question">
+                <h3>1. Apa yang akan dihasilkan oleh kode berikut ini?</h3>
+                <pre><code>print("Hello, World!")</code></pre>
+                <ul>
+                    <li><button onclick="checkAnswer(1, 'Hello, World!', this)">Hello, World!</button></li>
+                    <li><button onclick="checkAnswer(1, 'Hello World', this)">Hello World</button></li>
+                    <li><button onclick="checkAnswer(1, 'hello, world!', this)">hello, world!</button></li>
+                    <li><button onclick="checkAnswer(1, 'None of the above', this)">None of the above</button></li>
+                </ul>
+            </div>
+            <div class="quiz-question">
+                <h3>2. Bagaimana cara mendeklarasikan variabel di Python?</h3>
+                <ul>
+                    <li><button onclick="checkAnswer(2, 'x = 5', this)">x = 5</button></li>
+                    <li><button onclick="checkAnswer(2, 'int x = 5', this)">int x = 5</button></li>
+                    <li><button onclick="checkAnswer(2, 'declare x = 5', this)">declare x = 5</button></li>
+                    <li><button onclick="checkAnswer(2, 'var x = 5', this)">var x = 5</button></li>
+                </ul>
+            </div>
+            <div class="quiz-question">
+                <h3>3. Apa output dari kode berikut?</h3>
+                <pre><code>for i in range(3):
+    print(i)</code></pre>
+                <ul>
+                    <li><button onclick="checkAnswer(3, '0 1 2', this)">0 1 2</button></li>
+                    <li><button onclick="checkAnswer(3, '0 1 2 3', this)">0 1 2 3</button></li>
+                    <li><button onclick="checkAnswer(3, '1 2 3', this)">1 2 3</button></li>
+                    <li><button onclick="checkAnswer(3, 'None of the above', this)">None of the above</button></li>
+                </ul>
+            </div>
+            <div class="quiz-question">
+                <h3>4. Apa output dari kode berikut?</h3>
+                <pre><code>list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+print(list1 + list2)</code></pre>
+                <ul>
+                    <li><button onclick="checkAnswer(4, '[1, 2, 3, 4, 5, 6]', this)">[1, 2, 3, 4, 5, 6]</button></li>
+                    <li><button onclick="checkAnswer(4, 'Error', this)">Error</button></li>
+                    <li><button onclick="checkAnswer(4, '[1, 2, 3]', this)">[1, 2, 3]</button></li>
+                    <li><button onclick="checkAnswer(4, '[4, 5, 6]', this)">[4, 5, 6]</button></li>
+                </ul>
+            </div>
+            <div class="quiz-question">
+                <h3>5. Apa hasil dari ekspresi berikut?</h3>
+                <pre><code>10 % 3</code></pre>
+                <ul>
+                    <li><button onclick="checkAnswer(5, '1', this)">1</button></li>
+                    <li><button onclick="checkAnswer(5, '3', this)">3</button></li>
+                    <li><button onclick="checkAnswer(5, '0', this)">0</button></li>
+                    <li><button onclick="checkAnswer(5, '10', this)">10</button></li>
+                </ul>
+            </div>
+            
+            <div id="quiz-result"></div>
+            <button onclick="submitQuiz()">Submit Quiz</button>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Pembelajaran Pemrograman Dasar Python</p>
+    </footer>
+
+    <script>
+        let score = 0;
+
+        function checkAnswer(question, answer, element) {
+            const correctAnswers = {
+                1: "Hello, World!",
+                2: "x = 5",
+                3: "0 1 2",
+                4: "[1, 2, 3, 4, 5, 6]",
+                5: "1"
+            };
+            if (answer === correctAnswers[question]) {
+                score++;
+            }
+            
+            // Menandai tombol yang diklik dan menghapus penandaan dari tombol lainnya dalam pertanyaan yang sama
+            const buttons = element.parentElement.parentElement.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.classList.remove('clicked');
+            });
+            element.classList.add('clicked');
+        }
+        
+        function submitQuiz() {
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.innerHTML = `<p>Total skor Anda: ${score} dari 5</p>`;
+        }
+    </script>
+</body>
+</html>
